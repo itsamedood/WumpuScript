@@ -1,0 +1,14 @@
+export class Client {
+	string cmdsPath;
+	string eventsPath;
+
+	// Constructor.
+	private void func __onInit(this, string cmdsPath, string eventsPath) {
+		this.cmdsPathv = cmdsPath;
+		this.eventsPath = eventsPath;
+	}
+
+	public void func login(string token) {
+		// Code here to login.
+	}
+}
