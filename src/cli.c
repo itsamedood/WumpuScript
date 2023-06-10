@@ -2,20 +2,22 @@
 #include <stdlib.h>
 #include <string.h>
 #include "cli.h"
+#include "env.h"
 #include "out.h"
 
 static void print_help()
 {
-	const int HELP_LEN = 5;
-	char *help[HELP_LEN] = {
+	char *help[] = {
 		"Usage: wmps [flags] <main> [...]",
 		"Flags:",
 		"╭─ --help",
 		"⏐  --verbose",
 		"╰─ --version",
+		NULL
 	};
 
-	for (int i = 0; i < HELP_LEN; i++) printf("%s\n", help[i]);
+	for (int i = 0; help[i] != NULL; i++) printf("%s\n", help[i]);
+	exit(0);
 }
 
 static void print_version()
@@ -25,6 +27,7 @@ static void print_version()
 
 	snprintf(version_text, sizeof(version_text), "Version: %s%s%s", STYLE_LIGHT, version, PRST_RESET);
 	printf("%s\n", version_text);
+	exit(0);
 }
 
 void process_args(int argc, const char *argv[])
@@ -33,8 +36,13 @@ void process_args(int argc, const char *argv[])
 	else
 		for (int i = 0; i < argc; i++)
 		{
-			if (strcmp(argv[i], "--help") == 0) print_help();
-			if (strcmp(argv[i], "--verbose") == 0 ) { }
-			if (strcmp(argv[i], "--version") == 0 ) print_version();
+			if (strcmp(argv[i], "--help") == 0 || strcmp(argv[i], "-h") == 0) print_help();
+			if (strcmp(argv[i], "--verbose") == 0 || strcmp(argv[i], "-vb") == 0) { }
+			if (strcmp(argv[i], "--version") == 0 || strcmp(argv[i], "-v") == 0 ) print_version();
 		}
+
+	loadenv();
+
+	const char *main = argv[argc-1];
+	if (main[0] == '-') raise("missing argument '<main>'.", 1);
 }
