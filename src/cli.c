@@ -6,16 +6,16 @@
 
 static void print_help()
 {
-	char *help[] = {
+	const int HELP_LEN = 5;
+	char *help[HELP_LEN] = {
 		"Usage: wmps [flags] <main> [...]",
 		"Flags:",
 		"╭─ --help",
 		"⏐  --verbose",
 		"╰─ --version",
-		NULL,
 	};
 
-	for (int i = 0; help[i] != NULL; i++) printf("%s\n", help[i]);
+	for (int i = 0; i < HELP_LEN; i++) printf("%s\n", help[i]);
 }
 
 static void print_version()
