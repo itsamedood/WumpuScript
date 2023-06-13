@@ -2,5 +2,7 @@
 /bin
 
 *.DS_Store
+*.swp
+*.swo
 *.env
 *.o

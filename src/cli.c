@@ -5,7 +5,7 @@
 #include "env.h"
 #include "out.h"
 
-static void print_help()
+void print_help()
 {
 	char *help[] = {
 		"Usage: wmps [flags] <main> [...]",
@@ -20,7 +20,7 @@ static void print_help()
 	exit(0);
 }
 
-static void print_version()
+void print_version()
 {
 	char *version = "0.0.1";
 	char version_text[50];
@@ -41,7 +41,12 @@ void process_args(int argc, const char *argv[])
 			if (strcmp(argv[i], "--version") == 0 || strcmp(argv[i], "-v") == 0 ) print_version();
 		}
 
-	loadenv();
+	/* Construct path to .env. */
+	char *pwd = getenv("PWD");
+	char path[256];
+	snprintf(path, sizeof(path), "%s/.env", pwd);
+
+	loadenv(path);
 
 	const char *main = argv[argc-1];
 	if (main[0] == '-') raise("missing argument '<main>'.", 1);

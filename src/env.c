@@ -4,21 +4,33 @@
 #include "env.h"
 #include "out.h"
 
-void loadenv()
+int loadenv(char *path)
 {
-	/* Construct path to .env. */
-	char *pwd = getenv("PWD");
-	char path[256];
-	snprintf(path, sizeof(path), "%s/.env", pwd);
-
 	FILE *dotenv = fopen(path, "r");
 	if (!dotenv) raise("'.env' does not exist.", 1);
 
-	char line[500];
+	char line[MAX_LINE_LENGTH];
 	while (fgets(line, sizeof(line), dotenv) != NULL)
 	{
-		printf("Line: %s\n", line);
+		char *trimmed = strtok(line, "\n");
+		trimmed = strtok(trimmed, "\r");
+		trimmed = strtok(trimmed, "\t");
+
+		if (trimmed == NULL || trimmed[0] == '#' || trimmed[0] == '\0') continue;
+
+		char *key = strtok(trimmed, "=");
+		char *value = strtok(NULL, "=");
+
+		if (key != NULL && value != NULL)
+		{
+			int result = setenv(key, value, 1);
+			if (result != 0) raise("failed to set environmental variable.", 1);
+		} else raise("key or value found null.", 1);
 	}
 
-	if (fclose(dotenv) != 0) raise("failed to close '.env'.", 1);
+	char *token = getenv("TOKEN");
+	printf("TOKEN = %s\n", token);
+
+	fclose(dotenv);
+	return 0;
 }

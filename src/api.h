@@ -1,5 +1,5 @@
 #ifndef API_H
 #define API_H
 
-void get(void);
+void get_req(void);
 #endif

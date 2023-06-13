@@ -1,6 +1,6 @@
 #include "api.h"
 
-void get()
+void get_req()
 {
 	/* ... */
 }

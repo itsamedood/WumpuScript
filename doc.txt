@@ -1,2 +1,0 @@
-[START]
-Get flags from the command line, since these will effect the compiler.
