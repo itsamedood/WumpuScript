@@ -1,4 +1,4 @@
-from os import system, scandir, getenv, makedirs
+from os import system, scandir, getenv, getcwd, makedirs
 from os.path import exists
 from platform import system as sys_name
 from sys import argv, exit
@@ -6,7 +6,7 @@ from sys import argv, exit
 
 TARGET, VERSION = '', "0.0.1"
 OS, ZIP, OUTPATH, ASM = sys_name().lower(), '', '', "bin/assembly"
-PWD = getenv("PWD")
+PWD = getcwd()
 SYS: str | None
 
 
