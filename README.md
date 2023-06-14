@@ -4,4 +4,5 @@
 	<p>Discord bot programming language.</p><hr>
 	<!-- Fancy tags go here. -->
 	<h4>W.I.P</h4>
+	<img src="assets/wumpus-tools.png" width="50" />
 </div>

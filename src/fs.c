@@ -10,4 +10,8 @@ char *read_file(const char *path)
 {
 	FILE *file = fopen(path, "r");
 	if (!file) raise(1, "failed to open file: '%s'.", path);
+
+	/* need to finish lol */
+
+	return "HERE ARE SOME FUCKING THINGS TO TOKENIZE FFS";
 }

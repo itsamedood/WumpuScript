@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "lexer.h"
+#include "out.h"
 #include "tokens.h"
 
 enum Token *tokenize(char *code)
