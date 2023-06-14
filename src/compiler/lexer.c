@@ -1,3 +1,4 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -11,6 +12,10 @@ enum Token *tokenize(char *code)
 	for (int i = 0; i < (int)strlen(code); i++)
 	{
 		char cc = code[i];
+
+		if (cc == 'a') tokens[i] = L_A;
+		/* ... */
+
 		printf("CC = %c\n", cc);
 	}
 

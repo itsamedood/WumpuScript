@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <windows.h>
 #include "compiler/lexer.h"
 #include "cli.h"
 #include "env.h"
+#include "fs.h"
 #include "main.h"
 #include "out.h"
 
@@ -16,8 +18,7 @@ void print_help()
 		"╭─ --help",
 		"⏐  --verbose",
 		"╰─ --version",
-		#endif
-		#ifdef WINDOWS
+		#else
 		"  --help",
 		"  --verbose",
 		"  --version",
@@ -50,7 +51,12 @@ void process_args(int argc, const char *argv[])
 		}
 
 	/* Construct path to .env. */
+	#ifdef WINDOWS
+	char pwd[500];
+	DWORD pathlen = GetCurrentDirectoryA(500, pwd);
+	#else
 	char *pwd = getenv("PWD");
+	#endif
 	char path[256];
 	snprintf(path, sizeof(path), "%s/.env", pwd);
 
@@ -63,8 +69,11 @@ void process_args(int argc, const char *argv[])
 	snprintf(path, sizeof(path), "%s/%s", pwd, mainfile);
 	printf("PATH = %s\n", path);
 
+	if (exists(path) != 0) raise(1, "could not find '%s'.", path);
+
 	/* Invoke compiler; Lexer (tokenize) -> Parser (parse) */
-	enum Token *tokens = tokenize("HERE ARE SOME FUCKING THINGS TO TOKENIZE FFS");
+	char *mainfilecontent = read_file(path);
+	enum Token *tokens = tokenize(mainfilecontent);
 
 	free(tokens);
 }
