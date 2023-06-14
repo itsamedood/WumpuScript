@@ -1,0 +1,6 @@
+int integer = 420;
+float decimal = 6.9;
+bool debug = true;
+string name = "Wumpus";
+string[] groceries = ["Apples", "Bananas", "Cherries"];
+hashmap<string, bool> flags = {"debug": true, "cool": false};

@@ -1,0 +1,7 @@
+require Client from std/discord/client;
+require getenv from std/os/sys;
+
+const Client bot = Client(getenv("TOKEN"));
+
+# 👇 This should be called last.
+bot.login();

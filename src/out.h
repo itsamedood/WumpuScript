@@ -36,5 +36,5 @@
 #define PRST_RESET "\033[0;0;0m"
 
 /* Prints an error and exits with `code`. */
-extern void raise(char *message, int code);
+extern void raise(int code, const char *format, ...);
 #endif

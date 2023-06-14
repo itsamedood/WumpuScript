@@ -7,7 +7,7 @@
 int loadenv(char *path)
 {
 	FILE *dotenv = fopen(path, "r");
-	if (!dotenv) raise("'.env' does not exist.", 1);
+	if (!dotenv) raise(1, "'.env' does not exist.");
 
 	char line[MAX_LINE_LENGTH];
 	while (fgets(line, sizeof(line), dotenv) != NULL)
@@ -24,13 +24,10 @@ int loadenv(char *path)
 		if (key != NULL && value != NULL)
 		{
 			int result = setenv(key, value, 1);
-			if (result != 0) raise("failed to set environmental variable.", 1);
-		} else raise("key or value found null.", 1);
+			if (result != 0) raise(1, "failed to set environmental variable.");
+		} else raise(1, "key or value found null.");
 	}
 
-	char *token = getenv("TOKEN");
-	printf("TOKEN = %s\n", token);
-
-	fclose(dotenv);
+	if (fclose(dotenv) != 0) raise(1, "failed to close `.env`.");
 	return 0;
 }

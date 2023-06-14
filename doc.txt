@@ -1,0 +1,32 @@
+QUICK DOCS - WumpuScript
+
+=== KEYWORDS ===
+const   -> Marks variable as constant, meaning it's value cannot be changed.
+global  -> Changes a variables scope to global (unless already global, in which case an exception is raised).
+func    -> Declares a function.
+class   -> Declares a class.
+struct  -> Declares a structure.
+public  -> Denotes a class method or property as public, and can be accessed by instances.
+private -> Denotes a class method or property as private, and can only be accessed within the class itself.
+static 	-> Denotes a class method or property as static, where it belongs to the class itself and not an instance. Also makes a function or struct only accessible in the file it was declared in.
+export 	-> Exports a class, variable, struct, or function from the file, allowing it to be imported in another file and used.
+try 	-> Initiates a try-catch block, in which is code is tried, and any exceptions raised will be handled in the catch block.
+catch 	-> As explained above, any exception raised in the try block will be handled by whatever code is in the catch. It can even be discarded entirely.
+for 	-> Initiates a for loop; Example: `for (<loop variable>; <condition>; <increment count>) {}`
+while 	-> Initiates a while loop; Example: `while (<condition>) {}`
+if 		-> Initiates a conditional check; Example: `if (<condition>) {}`
+elif 	-> Used to chain conditional checks; Example `elif (<next condition>) {}`
+else 	-> Used to handle case where no other conditions were true; Example: `else {}`
+
+
+=== DATA TYPES ===
+int   -> Integer.
+float -> Floating point.
+bool  -> Boolean, either `true` or `false`.
+null  -> Standard null type.
+
+
+=== OTHER TYPES ===
+string  -> Array of characters that can be indexed.
+array   -> List of values that can be indexed.
+hashmap -> Collection of key-value pairs.

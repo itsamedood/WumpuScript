@@ -1,8 +1,8 @@
 /.vscode
 /bin
 
+test/bot/.env
 *.DS_Store
 *.swp
 *.swo
-*.env
 *.o

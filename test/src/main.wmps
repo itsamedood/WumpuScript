@@ -1,7 +1,0 @@
-require Client from std/discord/client;
-require getenv from std/os/sys;
-
-Client bot = Client(getenv("TOKEN")); // If the var name was all caps, it'd be a constant.
-
-/* 👇 This should be called last. */
-bot.login();

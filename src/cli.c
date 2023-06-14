@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "compiler/lexer.h"
 #include "cli.h"
 #include "env.h"
+#include "main.h"
 #include "out.h"
 
 void print_help()
@@ -10,9 +12,16 @@ void print_help()
 	char *help[] = {
 		"Usage: wmps [flags] <main> [...]",
 		"Flags:",
+		#ifdef UNIX
 		"╭─ --help",
 		"⏐  --verbose",
 		"╰─ --version",
+		#endif
+		#ifdef WINDOWS
+		"  --help",
+		"  --verbose",
+		"  --version",
+		#endif
 		NULL
 	};
 
@@ -22,10 +31,9 @@ void print_help()
 
 void print_version()
 {
-	char *version = "0.0.1";
 	char version_text[50];
 
-	snprintf(version_text, sizeof(version_text), "Version: %s%s%s", STYLE_LIGHT, version, PRST_RESET);
+	snprintf(version_text, sizeof(version_text), "Version: %s%s%s", STYLE_LIGHT, WMPS_VERSION, PRST_RESET);
 	printf("%s\n", version_text);
 	exit(0);
 }
@@ -47,7 +55,16 @@ void process_args(int argc, const char *argv[])
 	snprintf(path, sizeof(path), "%s/.env", pwd);
 
 	loadenv(path);
+	path[0] = '\0'; /* Reset buffer. */
 
-	const char *main = argv[argc-1];
-	if (main[0] == '-') raise("missing argument '<main>'.", 1);
+	const char *mainfile = argv[argc-1];
+	if (mainfile[0] == '-') raise(1, "missing argument '<main>'.");
+
+	snprintf(path, sizeof(path), "%s/%s", pwd, mainfile);
+	printf("PATH = %s\n", path);
+
+	/* Invoke compiler; Lexer (tokenize) -> Parser (parse) */
+	enum Token *tokens = tokenize("HERE ARE SOME FUCKING THINGS TO TOKENIZE FFS");
+
+	free(tokens);
 }
