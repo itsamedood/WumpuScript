@@ -22,7 +22,7 @@ char *read_file(const char *path)
 
 	/* Read file content into string. */
 	size_t read_size = fread(content, sizeof(char), file_size, file);
-	if (read_size != file_size)
+	if ((int)read_size != (int)file_size)
 	{
 		fclose(file);
 		free(content);

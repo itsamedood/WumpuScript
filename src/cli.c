@@ -53,7 +53,7 @@ void process_args(int argc, const char *argv[])
 	/* Construct path to .env. */
 	#ifdef WINDOWS
 	char pwd[500];
-	DWORD pathlen = GetCurrentDirectoryA(500, pwd);
+	GetCurrentDirectoryA(500, pwd);
 	#else
 	char *pwd = getenv("PWD");
 	#endif
