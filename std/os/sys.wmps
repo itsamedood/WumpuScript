@@ -1,1 +1,1 @@
-export func getenv(string v) { }
+export string? getenv(string v) { }

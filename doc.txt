@@ -3,7 +3,6 @@ QUICK DOCS - WumpuScript
 === KEYWORDS ===
 const   -> Marks variable as constant, meaning it's value cannot be changed.
 global  -> Changes a variables scope to global (unless already global, in which case an exception is raised).
-func    -> Declares a function.
 class   -> Declares a class.
 struct  -> Declares a structure.
 public  -> Denotes a class method or property as public, and can be accessed by instances.

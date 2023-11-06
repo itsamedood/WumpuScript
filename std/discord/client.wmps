@@ -3,12 +3,12 @@ export class Client {
 	string eventsPath;
 
 	// Constructor.
-	private void func __onInit(this, string cmdsPath, string eventsPath) {
+	private void __onInit(this, string cmdsPath, string eventsPath) {
 		this.cmdsPathv = cmdsPath;
 		this.eventsPath = eventsPath;
 	}
 
-	public void func login(string token) {
+	public void login(string token) {
 		// Code here to login.
 	}
 }
