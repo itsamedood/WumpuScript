@@ -6,11 +6,13 @@
 
 
 [BEFORE-HAND]
-✔ Figure out the syntax. @done
-☐ Determine keywords and their functionality.
+🟢 Figure out the syntax.
+🔴 Determine keywords and their functionality.
 
 
-[CLI] ❓
+[CLI]
+🟢 Read flags from command line.
+🟢 Get main `.wmps` file from command line.
 
 
 [AST] ❓

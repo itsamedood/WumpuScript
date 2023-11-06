@@ -1,0 +1,4 @@
+# Variables to export.
+export $argv; # The `$` here tells the compiler that it's value should be given at compile time by the compiler.
+
+export func getenv(string v) { }

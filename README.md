@@ -1,7 +1,7 @@
 <div align="center">
-	<img align="right" src="assets/wumpuscript-temp-logo.png" width="200" />
+	<img align="right" src="assets/wumpuscript-logo.png" width="200" />
 	<h1>WumpuScript</h1>
-	<p>Discord bot programming language.</p><hr>
+	<p>A programming language designed specifically for building Discord bots.</p><hr>
 	<!-- Fancy tags go here. -->
 	<h4>W.I.P</h4>
 	<img src="assets/wumpus-tools.png" width="50" />
